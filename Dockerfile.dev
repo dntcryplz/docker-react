@@ -1,0 +1,14 @@
+FROM node:alpine
+
+# set up working dir
+WORKDIR /app
+
+# add variables to the path
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package.json ./
+RUN npm install
+
+COPY . ./
+
+CMD ["npm", "run", "start"]
